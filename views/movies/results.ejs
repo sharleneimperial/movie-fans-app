@@ -7,16 +7,17 @@
 
 <ul>
     <% movieResults.forEach((movie)=> { %>
-        <div class "moviePicks">
+        <div class="moviePicks">
             <h1>
                 <%= movie.Title %>
             </h1>
             <div class="text-center">
             <p> <img src="<%= movie.Poster %>"></p>
-            <form method="POST" action="/movies/new">
+            <form method="POST" action="/movies/favorites">
                 <input hidden type="text" name="title" value="<%= movie.Title %>">
                 <input hidden type="text" name="year" value="<%= movie.Year %>">
                 <input hidden type="text" name="type" value="<%= movie.Type %>">
+                <input type="text" name="description" id="">
                 <button class="btnFave" type="submit">Add To Favorites</button>
             </form>
         </div>

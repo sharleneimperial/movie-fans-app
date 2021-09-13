@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require("axios");
 const db = require('../models');
 
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 const APIKey = process.env.API_KEY;
 
@@ -27,12 +28,48 @@ router.get('/results', async (req, res) => {
     const results = await axios.get(`http://www.omdbapi.com/?apikey=${APIKey}&s=${req.query.search}`)
 
     console.log(results.data.Search)
-    res.render('movies/results', { movieResults: results.data.Search ? results.data.Search : [] });
 
+    //routes the browser to/or renders the view '/results' as well it passes in the 'Movie' '/results' data
+    res.render('movies/results', { movieResults: results.data.Search ? results.data.Search : [] }); 
 })
 router.get('/new', (req, res) => {
     res.render('movies/new')
 })
+
+router.post('/favorites', isLoggedIn, async (req, res) => {
+    try {
+        const {id} = req.user.get();
+        const {title, description} = req.body;
+        // const searchResult = await db.Movie.findOrCreate({
+        //     where: {title},
+        //     defaults: { description, userId: id}
+        // })
+
+        
+
+        console.log('search result: ', searchResult);
+    const currentUser = db.User.findOne({
+        where: {id}
+    });
+
+    await currentUser.addFavorite(searchResult);
+    console.log('show me that association', currentUser);
+
+    res.redirect('/');
+
+    } catch (err) {
+        console.log(err);
+    }
+
+    
+
+
+    // the other thing we need to make the association is the movie's id
+
+    
+})
+    
+
 router.post('/new', async (req, res) => {
     const createMovie = await db.Movie.findOrCreate({
         where: {title: req.body.title},

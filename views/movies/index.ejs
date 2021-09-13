@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your favorite movies!</title>
+</head>
+<body>
+<div class="text-center">
+    <h2> Your Top 5 List </h2>
+<% allMovies.forEach(Movie=> { %>
+    <h4>
+        <%= movie.title %>
+        <img src="<%= movie.Poster %>">
+    </h4>
+    
+    <p>
+        <%= movie.description %>
+    </p>
+    <p>
+        <%= movie.review %>
+    </p>
+    <form action="/movies/update?_method=PUT" method="POST">
+        <label for="description">Description:</label>
+        <input type="text" name="updateDescription">
+        <label for="review">Your Review:</label>
+        <input type="text" name="updateReview">
+        <input hidden name="movieId" value="<%= movie.id %>">
+        <button class="btnPrimary" type="submit">SUBMIT</button>
+    </form>
+    <form action="/movies/delete?_method=DELETE" method="POST">
+        <input hidden name="delete" value="<%= movie.id %>">
+        <button class="btnPrimary" type="submit">DELETE</button>
+    
+    </form>
+    
+    <% }) %>
+
+</div> 
+</body>
+</html>

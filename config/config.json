@@ -1,11 +1,11 @@
 {
   "development": {
-    "database": "express_authentication_development",
+    "database": "movie-fans-app",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "express_authentication_test",
+    "database": "movie-fans-app",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

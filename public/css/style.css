@@ -1,9 +1,96 @@
-nav ul li {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: .3em;
+#backgroundImage {
+  height: 100vh;
+  opacity: .25;
+  background-image: url('https://i.imgur.com/X6tT3ZC.jpg');
+}
+
+#backgroundColor {
+  background-color:purple;
+  height: 7vh;
+}
+
+#backgroundProfile {
+  background-image: url('https://i.imgur.com/hEZGaaf.jpg');
 }
 
 h1 {
-  color: chartreuse;
+  color: black;
+  text-align: center;
+  font-family: 'Papyrus';
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+h2 {
+  color: black;
+  font-family:'Papyrus';
+  font-weight: bold;
+}
+
+h3 {
+  color: black;
+  font-family: 'Papyrus';
+  font-weight: bold;
+}
+
+p {
+  color:black;
+  font-weight: bold;
+  font-family: 'Papyrus';
+  font-size: 20px;
+}
+
+.btnNotice {
+  color:white;
+  background-color: black;
+  border-color: gray;
+  font-size: 25px;
+  font-family: 'Papyrus';
+  font-weight: bold;
+}
+
+.btnNotice:hover {
+  background-color: #ffffff;;
+}
+
+.btnPrimary {
+  color:white;
+  background-color: black;
+  border-color: gray;
+  font-family:'Papyrus';
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.btnPrimary:hover {
+    background-color: #ffffff;;
+  }
+
+.btnFave {
+  color:blue;
+  background-color: black;
+  border-color: gray;
+  font-family:'Papyrus';
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+ 
+.btnFave:hover {
+  background-color: #ffffff;;
+}
+ 
+#searchBox {
+  position: absolute;
+  z-index: 3;
+  top: 300px;
+  opacity: 0.8;
+  width: 10%;
+  right: 45%;
+}
+
+#github {
+	height: 20px;
+	padding-top: 6px;
+	padding-right: 5px;
 }

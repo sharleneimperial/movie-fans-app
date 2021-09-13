@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 app.use('/auth', require('./controllers/auth'));
 app.use('/movies', require('./controllers/movies'));
 
-app.get('/profile', authorizedRoute, (req, res) => {
+app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get(); 
   console.log("PROFILE");
   res.render('profile', { id, name, email });

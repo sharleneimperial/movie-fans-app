@@ -5,7 +5,7 @@ const app = express();
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('./config/ppConfig');
-const isLoggedIn = require('./middleware/isloggedIn');
+const isLoggedIn = require('./middleware/isLoggedIn');
 const methodOverride = require('method-override');
 const db = require('./models');
 

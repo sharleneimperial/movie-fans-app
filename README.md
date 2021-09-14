@@ -66,7 +66,7 @@ A list of your favorite movies.
 -   Edit your reviews.
 -   Delete movies, descriptions and reviews to add new ones.
 
-![] (https://i.imgur.com/kGadwgX.png)
+![](https://i.imgur.com/kGadwgX.png)
 
 ## Models:
 

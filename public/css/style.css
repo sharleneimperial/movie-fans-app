@@ -102,3 +102,25 @@ ul {
   font-weight: bold;
   font-size: 20px;
 }
+
+.text-center {
+  font-family:'Papyrus';
+  font-weight: bold;
+  font-size: 20px;
+}
+
+input {
+  color: white;
+  background-color: black;
+  font-family: 'Papyrus';
+  height: 45px;
+}
+
+#search {
+width: 250px;
+height:45px;
+color: white;
+font-family:'Papyrus';
+border: white;
+}
+

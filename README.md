@@ -60,6 +60,14 @@ Other languages that were utilized include:
 
 ![](https://i.imgur.com/9I7jf89.png)
 
+## In the movies tab:
+A list of your favorite movies. 
+-   You can edit/make an update to your description about the movie.
+-   Edit your reviews.
+-   Delete movies, descriptions and reviews to add new ones.
+
+![] (https://i.imgur.com/kGadwgX.png)
+
 ## Models:
 
 ### User Model
@@ -104,7 +112,6 @@ router.get('/results', async (req, res) => {
     res.render('movies/results', { movieResults: results.data.Search ? results.data.Search : [] }); 
 })
 ```
-
 ## Conclusion
 
 While creating this app, I must say I have come across many blockers and bugs and was quite challenging. But overall, I had so much fun doing this. I've learned to know how to read the bugs and to find a solution to fix them. Everyday, I will always be learning something new and will come across more bugs. I'm prepared for whatever obstacle is coming my way! That's how we learn and get better at the things that we do. In the future, I hope to add in a little more fun designs and features to this app. Creating more routes to play the theme music/iconic music of each movie to make it more entertaining when after user searches for their favorite movies. Also, I would like to thank my wonderful TA's that helped me through certain concepts of my project. Because of them, I was able to take what I have learned to build this interesting app! 

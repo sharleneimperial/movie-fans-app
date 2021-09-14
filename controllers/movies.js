@@ -79,7 +79,7 @@ router.put('/update', (req, res) => {
     console.log(req.body.updateReview)
     console.log("updateReview")
     console.log(req.body.movieId)
-    db.movie.update(
+    db.Movie.update(
         {
             description: req.body.updateDescription,
             review: req.body.updateReview

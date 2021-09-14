@@ -1,12 +1,12 @@
-<h3>YOUR PROFILE</h3>
-
-<p>Id: <%= id %></p>
+<h3>Hello, <%= name %> </p>Welcome To Your Profile!</h3>
+<br>
+<p>Your Id: <%= id %></p>
 <p>Name: <%= name %></p>
 <p>Email: <%= email %></p>
 
 <ul>
 
-  <h1>Here are your TOP favorite movies:</h1>
+  <h1>Here Are Your Top Favorite Movies:</h1>
   <% movies.forEach(movie => { %>
     <li><%= movie.title %> </li>
   <% }) %>

@@ -5,8 +5,9 @@ const app = express();
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('./config/ppConfig');
-const isLoggedIn = require('./middleware/isLoggedIn');
+const isLoggedIn = require('./middleware/isloggedIn');
 const methodOverride = require('method-override');
+const db = require('./models');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
@@ -36,18 +37,33 @@ app.use((req,res,next)=> {
   res.locals.currentUser = req.user;
   next();
 })
+
+
 //start of website
 app.get('/', (req, res) => {
-  res.render('index');
+    res.render('index');
 });
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/movies', require('./controllers/movies'));
 
-app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
+app.get('/profile', isLoggedIn, async (req, res) => {
+  try {
+    const { id, name, email } = req.user.get(); 
+
+    const currentUser = await db.User.findOne({
+      where: {id},
+      include: [db.Movie]
+    });
+
+    console.log(currentUser.Movies);
+
   console.log("PROFILE");
-  res.render('profile', { id, name, email });
+  res.render('profile', { id, name, email, movies: currentUser.Movies});
+  } catch (err) {
+    console.log(err);
+  }
+  
 });
 
 const PORT = process.env.PORT || 3000;

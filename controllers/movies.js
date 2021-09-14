@@ -7,17 +7,18 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 
 const APIKey = process.env.API_KEY;
 
-router.get('/', (req, res)=>{
-    db.Movie.findAll()
-    .then((foundMovies) => {
-        console.log("movie found")
-        console.log(foundMovies)
-        res.render('movies/index', {
-            allMovies: foundMovies
-        })
-    })
-})
+router.get('/', async (req, res)=>{
+    try {
+        const {id} = req.user.get();
+        const allMovies = await db.Movie.findAll({
+            where: {userId: id}
+        });
 
+        res.render('movies/index', {allMovies});
+    } catch (err) {
+        console.log(err);
+    }
+})
 
 
 router.get('/search', (req, res) => {
@@ -39,36 +40,29 @@ router.get('/new', (req, res) => {
 router.post('/favorites', isLoggedIn, async (req, res) => {
     try {
         const {id} = req.user.get();
-        const {title, description} = req.body;
-        // const searchResult = await db.Movie.findOrCreate({
-        //     where: {title},
-        //     defaults: { description, userId: id}
-        // })
+        const {title, description, review} = req.body;
 
         
+        const currentUser = await db.User.findOne({
+            where: {id}
+        });
 
-        console.log('search result: ', searchResult);
-    const currentUser = db.User.findOne({
-        where: {id}
-    });
+        const newMovie = await currentUser.createMovie({title, description, review});
+        console.log(newMovie);
 
-    await currentUser.addFavorite(searchResult);
-    console.log('show me that association', currentUser);
-
-    res.redirect('/');
+        const newFavorite = await db.Favorites.create({
+            userId: id, 
+            movieId: newMovie.id
+        });
+        
+        console.log(newFavorite);
+        res.redirect('/');
 
     } catch (err) {
         console.log(err);
     }
-
-    
-
-
-    // the other thing we need to make the association is the movie's id
-
-    
 })
-    
+
 
 router.post('/new', async (req, res) => {
     const createMovie = await db.Movie.findOrCreate({

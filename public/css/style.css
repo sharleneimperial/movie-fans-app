@@ -98,4 +98,7 @@ p {
 ul {
   text-align: center;
   list-style: inside;
+  font-family:'Papyrus';
+  font-weight: bold;
+  font-size: 20px;
 }
